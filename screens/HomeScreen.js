@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
-import { categories, shortVideos } from "../constant";
+import { categories, shortVideos, videos } from "../constant";
 import ShortVideoCard from "../components/shortVideoCard";
+import VideoCard from "../components/videoCard";
 
 export function HomeScreen() {
   const [activedCategory, setActiveCategory] = useState("All");
@@ -67,7 +68,7 @@ export function HomeScreen() {
           </ScrollView>
         </View>
         {/* end categories */}
-        {/* short video */}
+        {/* short videos */}
         <View className="mt-2 py-5 space-y-3 border-b-zinc-700 border-t-zinc-700 border-4 border-l-0 border-r-0">
           <View className="mx-4 flex-row items-center space-x-2">
             <Image
@@ -88,6 +89,13 @@ export function HomeScreen() {
             ))}
           </ScrollView>
         </View>
+        {/* end short videos */}
+        {/* videos */}
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {videos.map((video, index) => (
+            <VideoCard video={video} key={index} />
+          ))}
+        </ScrollView>
       </ScrollView>
     </View>
   );
