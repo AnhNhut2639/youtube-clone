@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,26 +6,39 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
-import { categories, shortVideos, videos } from "../constant";
+import { categories, shortVideos } from "../constant";
 import ShortVideoCard from "../components/shortVideoCard";
 import VideoCard from "../components/videoCard";
+import { fetchTrendingVideos } from "../api/youtube";
 
 export function HomeScreen() {
   const [activedCategory, setActiveCategory] = useState("All");
+  const [videos, setVideos] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetchTrendingVideos();
+    setVideos(data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <View style={{ backgroundColor: themeColors.bg }} className="flex-1">
+      <StatusBar />
       {/* ---------- Logo, icon area ----------- */}
-      <SafeAreaView className="flex-row justify-between mx-4 mt-8">
-        <View className="flex-row items-center space-x-1">
+      <SafeAreaView className="flex-row justify-between mx-4 mt-5">
+        <View className="flex-row items-center space-x-1 mb-3">
           <Image
             source={require("../assets/icons/youtubeIcon.png")}
             className="h-7 w-10"
           />
           <Text className="text-white font-semibold text-xl tracking-tighter">
-            Youtube
+            YouTube
           </Text>
         </View>
         <View className="flex-row items-center space-x-3">
@@ -33,7 +46,7 @@ export function HomeScreen() {
           <Icon.Bell stroke="white" strokeWidth={1.2} height="22" />
           <Icon.Search stroke="white" strokeWidth={1.2} height="22" />
           <Image
-            source={require("../assets/images/avatar.png")}
+            source={require("../assets/images/avatar.jpg")}
             className="h-7 w-7 rounded-full"
           />
         </View>
@@ -71,7 +84,7 @@ export function HomeScreen() {
 
         {/* ---------- Suggest ----------- */}
 
-        <VideoCard video={videos[4]} />
+        {/* <VideoCard video={videos[4]} /> */}
 
         {/* ---------- End Suggest ----------- */}
 
