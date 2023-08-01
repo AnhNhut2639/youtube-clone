@@ -17,7 +17,7 @@ export function HomeScreen() {
   const [activedCategory, setActiveCategory] = useState("All");
   return (
     <View style={{ backgroundColor: themeColors.bg }} className="flex-1">
-      {/* logo, icon area */}
+      {/* ---------- Logo, icon area ----------- */}
       <SafeAreaView className="flex-row justify-between mx-4 mt-8">
         <View className="flex-row items-center space-x-1">
           <Image
@@ -38,9 +38,9 @@ export function HomeScreen() {
           />
         </View>
       </SafeAreaView>
-      {/* end logo, icon area */}
+      {/* ----------End logo, icon area ----------- */}
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        {/* categories */}
+        {/* ---------- Categories ----------- */}
         <View className="py-2 pb-5">
           <ScrollView
             className="px-4"
@@ -67,8 +67,15 @@ export function HomeScreen() {
             })}
           </ScrollView>
         </View>
-        {/* end categories */}
-        {/* short videos */}
+        {/* ---------- End Categories ----------- */}
+
+        {/* ---------- Suggest ----------- */}
+
+        <VideoCard video={videos[4]} />
+
+        {/* ---------- End Suggest ----------- */}
+
+        {/* ---------- Short videos ----------- */}
         <View className="mt-2 py-5 space-y-3 border-b-zinc-700 border-t-zinc-700 border-4 border-l-0 border-r-0">
           <View className="mx-4 flex-row items-center space-x-2">
             <Image
@@ -89,13 +96,15 @@ export function HomeScreen() {
             ))}
           </ScrollView>
         </View>
-        {/* end short videos */}
-        {/* videos */}
+        {/* ---------- End short videos ----------- */}
+
+        {/* ---------- Videos ----------- */}
         <ScrollView showsVerticalScrollIndicator={false}>
           {videos.map((video, index) => (
             <VideoCard video={video} key={index} />
           ))}
         </ScrollView>
+        {/* ---------- End videos ----------- */}
       </ScrollView>
     </View>
   );
