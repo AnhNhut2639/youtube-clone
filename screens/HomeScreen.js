@@ -46,7 +46,7 @@ export function HomeScreen() {
           <Icon.Bell stroke="white" strokeWidth={1.2} height="22" />
           <Icon.Search stroke="white" strokeWidth={1.2} height="22" />
           <Image
-            source={require("../assets/images/avatar.jpg")}
+            source={require("../assets/images/avatar.png")}
             className="h-7 w-7 rounded-full"
           />
         </View>
