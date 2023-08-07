@@ -35,9 +35,6 @@ yarn run start
 
 - [https://www.rapidapi.com/](https://rapidapi.com/ytdlfree/api/youtube-v3-alternative)
 
-To use the app effectively, consider the following:
-
-- Grant the app permission to access your device's location for accurate weather data.
   
 # Acknowledgements
 
